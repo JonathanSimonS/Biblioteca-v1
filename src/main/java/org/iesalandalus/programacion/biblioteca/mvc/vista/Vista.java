@@ -1,11 +1,13 @@
 package org.iesalandalus.programacion.biblioteca.mvc.vista;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.biblioteca.mvc.controlador.Controlador;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.*;
+
 
 /**
  * @author: Jonathan Simón Sánchez
@@ -22,6 +24,9 @@ public class Vista {
 	}
 
 	public void setControlador(Controlador controlador) {
+		if(controlador==null) {
+			throw new NullPointerException("ERROR: El controlador no puede ser nulo.");
+		}
 		this.controlador = controlador;
 	}
 
@@ -70,8 +75,8 @@ public class Vista {
 	}
 
 	public void listarAlumnos() {
-		Alumno[] alumnos = controlador.getAlumnos();
-		if (alumnos[0] != null) {
+		List<Alumno> alumnos = controlador.getAlumnos();
+		if (alumnos != null) {
 			for (Alumno alumno : alumnos) {
 				if (alumno != null) 
 					System.out.println(alumno);
@@ -112,8 +117,8 @@ public class Vista {
 	}
 
 	public void listarLibros() {
-		Libro[] libros = controlador.getLibros();
-		if (libros[0] != null) {
+		List<Libro> libros = controlador.getLibros();
+		if (libros != null) {
 			for (Libro libro : libros) {
 				if (libro != null) 
 					System.out.println(libro);
@@ -164,8 +169,8 @@ public class Vista {
 	}
 
 	public void listarPrestamos() {
-		Prestamo[] prestamos = controlador.getPrestamos();
-		if (prestamos[0] != null) {
+		List<Prestamo> prestamos = controlador.getPrestamos();
+		if (prestamos != null) {
 			for (Prestamo prestamo : prestamos) {
 				if (prestamo != null) 
 					System.out.println(prestamo);
@@ -176,8 +181,8 @@ public class Vista {
 	}
 
 	public void listarPrestamosAlumno() {
-		Prestamo[] prestamos = controlador.getPrestamos(Consola.leerAlumnoFicticio());
-		if (prestamos[0] != null) {
+		List<Prestamo> prestamos = controlador.getPrestamos(Consola.leerAlumnoFicticio());
+		if (prestamos != null) {
 			for (Prestamo prestamo : prestamos) {
 				if (prestamo != null) 
 					System.out.println(prestamo);
@@ -188,8 +193,8 @@ public class Vista {
 	}
 
 	public void listarPrestamosLibro() {
-		Prestamo[] prestamos = controlador.getPrestamos(Consola.leerLibroFicticio());
-		if (prestamos[0] != null) {
+		List<Prestamo> prestamos = controlador.getPrestamos(Consola.leerLibroFicticio());
+		if (prestamos != null) {
 			for (Prestamo prestamo : prestamos) {
 				if (prestamo != null) 
 					System.out.println(prestamo);
@@ -200,8 +205,8 @@ public class Vista {
 	}
 
 	public void listarPrestamosFecha() {
-		Prestamo[] prestamos = controlador.getPrestamos(Consola.leerPrestamo().getFechaPrestamo());
-		if (prestamos[0] != null) {
+		List<Prestamo> prestamos = controlador.getPrestamos(Consola.leerPrestamo().getFechaPrestamo());
+		if (prestamos != null) {
 			for (Prestamo prestamo : prestamos) {
 				if (prestamo != null) 
 					System.out.println(prestamo);
