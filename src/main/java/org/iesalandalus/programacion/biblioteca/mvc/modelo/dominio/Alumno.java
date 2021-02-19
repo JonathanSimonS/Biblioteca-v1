@@ -8,7 +8,7 @@ public class Alumno {
 
 	// Atributos y constantes
 	
-	private static final String ER_NOMBRE = "[a-zA-ZÁáÉéÍíÓóÚú]+[\\s]+[a-zA-ZÁáÉéÍíÓóÚú\\s]*";
+	private static final String ER_NOMBRE = "[a-zA-ZÁáÉéÍíÓóÚúñ]+[\\s]+[a-zA-ZÁáÉéÍíÓóÚúñ\\s]*";
 	private static final String ER_CORREO = "\\w+(?:\\.\\w+)*@{1}\\w+\\.\\w{2,5}";
 	private String nombre;
 	private String correo; 
@@ -17,7 +17,7 @@ public class Alumno {
 	// M. Constructores
 	
 	public Alumno(String nombre, String correo, Curso curso) {
-		setNombre(formateaNombre(nombre));
+		setNombre(nombre);
 		setCorreo(correo);
 		setCurso(curso);
 	}
@@ -58,7 +58,7 @@ public class Alumno {
 		if (nombre.trim().equals("")) {
 			throw new IllegalArgumentException("ERROR: El nombre no puede estar vacío.");
 		}
-		this.nombre = nombre;
+		this.nombre = formateaNombre(nombre);
 	}
 
 	/**

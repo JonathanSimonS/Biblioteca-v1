@@ -2,6 +2,7 @@ package org.iesalandalus.programacion.biblioteca.mvc.controlador;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.OperationNotSupportedException;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.Modelo;
@@ -103,5 +104,8 @@ public class Controlador {
 
 	public List<Prestamo> getPrestamos(LocalDate fecha) {
 		return modelo.getPrestamos(fecha);
+	}
+	public Map<Curso,Integer> getEstadisticaMensualPorCurso(LocalDate fecha){
+		return modelo.getEstadisticaMensualPorCurso(fecha);
 	}
 }

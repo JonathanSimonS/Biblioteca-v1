@@ -1,13 +1,14 @@
 package org.iesalandalus.programacion.biblioteca.mvc.vista;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.biblioteca.mvc.controlador.Controlador;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.*;
-
 
 /**
  * @author: Jonathan Simón Sánchez
@@ -24,7 +25,7 @@ public class Vista {
 	}
 
 	public void setControlador(Controlador controlador) {
-		if(controlador==null) {
+		if (controlador == null) {
 			throw new NullPointerException("ERROR: El controlador no puede ser nulo.");
 		}
 		this.controlador = controlador;
@@ -78,7 +79,7 @@ public class Vista {
 		List<Alumno> alumnos = controlador.getAlumnos();
 		if (alumnos != null) {
 			for (Alumno alumno : alumnos) {
-				if (alumno != null) 
+				if (alumno != null)
 					System.out.println(alumno);
 			}
 		} else {
@@ -120,7 +121,7 @@ public class Vista {
 		List<Libro> libros = controlador.getLibros();
 		if (libros != null) {
 			for (Libro libro : libros) {
-				if (libro != null) 
+				if (libro != null)
 					System.out.println(libro);
 			}
 		} else {
@@ -139,7 +140,7 @@ public class Vista {
 
 	public void devolverLibro() {
 		try {
-			controlador.devolver(Consola.leerPrestamo(), LocalDate.now() );
+			controlador.devolver(Consola.leerPrestamo(), LocalDate.now());
 			System.out.println("Libro devuelto.");
 		} catch (OperationNotSupportedException | IllegalArgumentException | NullPointerException e) {
 			System.out.println(e.getMessage());
@@ -172,7 +173,7 @@ public class Vista {
 		List<Prestamo> prestamos = controlador.getPrestamos();
 		if (prestamos != null) {
 			for (Prestamo prestamo : prestamos) {
-				if (prestamo != null) 
+				if (prestamo != null)
 					System.out.println(prestamo);
 			}
 		} else {
@@ -184,7 +185,7 @@ public class Vista {
 		List<Prestamo> prestamos = controlador.getPrestamos(Consola.leerAlumnoFicticio());
 		if (prestamos != null) {
 			for (Prestamo prestamo : prestamos) {
-				if (prestamo != null) 
+				if (prestamo != null)
 					System.out.println(prestamo);
 			}
 		} else {
@@ -196,7 +197,7 @@ public class Vista {
 		List<Prestamo> prestamos = controlador.getPrestamos(Consola.leerLibroFicticio());
 		if (prestamos != null) {
 			for (Prestamo prestamo : prestamos) {
-				if (prestamo != null) 
+				if (prestamo != null)
 					System.out.println(prestamo);
 			}
 		} else {
@@ -208,12 +209,20 @@ public class Vista {
 		List<Prestamo> prestamos = controlador.getPrestamos(Consola.leerPrestamo().getFechaPrestamo());
 		if (prestamos != null) {
 			for (Prestamo prestamo : prestamos) {
-				if (prestamo != null) 
+				if (prestamo != null)
 					System.out.println(prestamo);
 			}
 		} else {
 			System.out.println("No hay prestamos para mostrar.");
 		}
+	}
+
+	public void mostrarEstadisticaMensualPorCurso() {
+		Prestamo prestamo = controlador.buscar(Consola.leerPrestamoFicticio());
+		LocalDate fecha = prestamo.getFechaPrestamo();
+		String cadena="";
+		fecha = LocalDate.parse(cadena,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		controlador.getEstadisticaMensualPorCurso(Consola.leerFecha(cadena));
 	}
 
 }
