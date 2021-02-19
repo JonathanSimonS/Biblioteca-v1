@@ -55,10 +55,14 @@ public class Consola {
 		String nombre;
 		String correo;
 		int opcion;
-		System.out.println("Introduce el nombre del alumno:");
-		nombre = Entrada.cadena();
-		System.out.println("Introduce el correo del alumno:");
-		correo = Entrada.cadena();
+		do {
+			System.out.println("Introduce el nombre del alumno:");
+			nombre = Entrada.cadena();
+		} while (nombre == null || nombre.equals(""));
+		do {
+			System.out.println("Introduce el correo del alumno:");
+			correo = Entrada.cadena();
+		} while (correo == null || correo.equals(""));
 		do {
 			System.out.println("Introduce el curso del alumno:");
 			System.out.println("1º - 0");
@@ -73,8 +77,10 @@ public class Consola {
 
 	public static Alumno leerAlumnoFicticio() {
 		String correo;
-		System.out.println("Introduzca el correo del alumno ficticio: ");
-		correo = Entrada.cadena();
+		do {
+			System.out.println("Introduzca el correo del alumno ficticio: ");
+			correo = Entrada.cadena();
+		} while (correo == null || correo.equals("") || !correo.matches("\\w+(?:\\.\\w+)*@{1}\\w+\\.\\w{2,5}"));
 		return Alumno.getAlumnoFicticio(correo);
 	}
 
@@ -82,12 +88,18 @@ public class Consola {
 		String titulo;
 		String autor;
 		int numPaginas;
-		System.out.println("Introduce el título del libro: ");
-		titulo = Entrada.cadena();
-		System.out.println("Introduce el autor del libro: ");
-		autor = Entrada.cadena();
-		System.out.println("Introduce las páginas del libro del libro: ");
-		numPaginas = Entrada.entero();
+		do {
+			System.out.println("Introduce el título del libro: ");
+			titulo = Entrada.cadena();
+		} while (titulo == null || titulo.equals(""));
+		do {
+			System.out.println("Introduce el autor del libro: ");
+			autor = Entrada.cadena();
+		} while (autor == null || autor.equals(""));
+		do {
+			System.out.println("Introduce las páginas del libro del libro: ");
+			numPaginas = Entrada.entero();
+		} while (numPaginas <= 0);
 		return new Libro(titulo, autor, numPaginas);
 
 	}
@@ -95,10 +107,14 @@ public class Consola {
 	public static Libro leerLibroFicticio() {
 		String titulo;
 		String autor;
+		do {
 			System.out.println("Introduce el título del libro: ");
 			titulo = Entrada.cadena();
+		} while (titulo == null || titulo.equals(""));
+		do {
 			System.out.println("Introduce el autor del libro: ");
 			autor = Entrada.cadena();
+		} while (autor == null || autor.equals(""));
 		return Libro.getLibroFicticio(titulo, autor);
 	}
 
@@ -112,7 +128,7 @@ public class Consola {
 		Alumno alumno = leerAlumno();
 		Libro libro = leerLibro();
 		String cadenaFecha;
-		
+
 		do {
 			System.out.println("Introduce la fecha (DD/MM/AAAA): ");
 			cadenaFecha = Entrada.cadena();
