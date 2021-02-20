@@ -136,29 +136,20 @@ public class Prestamos {
 	}
 	
 	public Map<Curso, Integer> getEstadisticaMensualPorCurso(LocalDate fecha){
-		Map<Curso, Integer> mapa = inicializarEstadisticas();
-		
+		Map<Curso, Integer> estadisticaMensual = inicializarEstadisticas();
 		List<Prestamo> prestamosMensuales = get(fecha);		
-		
 		for (Prestamo prestamo : prestamosMensuales) {
 			Curso cursoAlumno=prestamo.getAlumno().getCurso();
-			int puntos = prestamo.getPuntos();
-			mapa.put(cursoAlumno, puntos);
+			estadisticaMensual.put(cursoAlumno, estadisticaMensual.get(cursoAlumno));
 		}
-		
-		return mapa;
+		return estadisticaMensual;
 	}
-	
-	private Map<Curso, Integer> inicializarEstadisticas() {
-		
-		Map<Curso, Integer> mapa = new EnumMap<>(Curso.class);
-		
-		for (Map.Entry<Curso, Integer>  mapaCursos : mapa.entrySet()) {
-			Curso clave= mapaCursos.getKey();
-			mapa.put(clave, 0);
-		}
-		
-		return mapa;
+	private Map<Curso, Integer> inicializarEstadisticas() {	
+		Map<Curso, Integer> estadisticaMensual = new EnumMap<>(Curso.class);
+		for (Curso curso : Curso.values()) {
+			estadisticaMensual.put(curso, 0);
+			}		
+		return estadisticaMensual;
 	}
 	
 
