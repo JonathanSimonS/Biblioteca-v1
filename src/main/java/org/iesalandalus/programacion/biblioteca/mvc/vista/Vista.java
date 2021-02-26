@@ -3,7 +3,7 @@ package org.iesalandalus.programacion.biblioteca.mvc.vista;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Map;
+
 
 import javax.naming.OperationNotSupportedException;
 
@@ -12,7 +12,7 @@ import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.*;
 
 /**
  * @author: Jonathan Simón Sánchez
- * 
+ * @version: v1
  **/
 public class Vista {
 

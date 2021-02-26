@@ -10,7 +10,7 @@ import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Alumno;
 
 /**
  * @author: Jonathan Simón Sánchez
- * 
+ * @version: v1
  **/
 public class Alumnos {
 

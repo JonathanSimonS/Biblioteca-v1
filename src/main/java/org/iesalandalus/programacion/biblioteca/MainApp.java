@@ -6,7 +6,7 @@ import org.iesalandalus.programacion.biblioteca.mvc.vista.Vista;
 
 /**
  * @author: Jonathan Simón Sánchez
- * 
+ * @version: v1
  **/
 public class MainApp {
 

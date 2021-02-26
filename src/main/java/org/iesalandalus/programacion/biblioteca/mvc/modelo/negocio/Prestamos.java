@@ -2,13 +2,13 @@ package org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.Map.Entry;
 
 import javax.naming.OperationNotSupportedException;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.*;
 
 /**
  * @author: Jonathan Simón Sánchez
+ * @version: v1
  **/
 public class Prestamos {
 
@@ -140,7 +140,7 @@ public class Prestamos {
 		List<Prestamo> prestamosMensuales = get(fecha);		
 		for (Prestamo prestamo : prestamosMensuales) {
 			Curso cursoAlumno=prestamo.getAlumno().getCurso();
-			estadisticaMensual.put(cursoAlumno, estadisticaMensual.get(cursoAlumno));
+			estadisticaMensual.put(cursoAlumno, estadisticaMensual.get(cursoAlumno) + prestamo.getPuntos());
 		}
 		return estadisticaMensual;
 	}

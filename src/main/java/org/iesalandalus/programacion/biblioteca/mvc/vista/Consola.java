@@ -8,7 +8,7 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 
 /**
  * @author: Jonathan Simón Sánchez
- * 
+ * @version: v1
  **/
 public class Consola {
 
